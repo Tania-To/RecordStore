@@ -1,0 +1,26 @@
+﻿
+@using System.Security.Claims
+@if (User.HasClaim("HR", "Admin")) 
+{
+	<li class="nav-item">
+		<a class="nav-link text-white" style="font-size:20px; font-weight:bold;" asp-page="/Associate/Associates">Associates</a>
+    </li>
+	<li class="nav-item">
+		<a class="nav-link text-white" style="font-size:20px; font-weight:bold;" asp-page="/Manager/Managers">Managers</a>
+    </li>
+}
+else if (User.HasClaim("UserManager", "Manager"))
+{
+    <li class="nav-item">
+        <a class="nav-link text-white" style="font-size:20px; font-weight:bold;" asp-area="" asp-page="/Product/ProductInventory">Inventory</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-white" style="font-size:20px; font-weight:bold;" asp-area="" asp-page="/Purchase/PointOfSale">POS</a>
+    </li
+}
+else if (User.HasClaim("UserAssociate", "Associate"))
+{
+    <li class="nav-item">
+        <a class="nav-link text-white"  style="font-size:20px; font-weight:bold;" asp-area="" asp-page="/Purchase/PointOfSale">POS</a>
+    </li>
+}

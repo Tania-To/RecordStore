@@ -1,0 +1,24 @@
+﻿@using System.Security.Claims
+@if (User.Identity.IsAuthenticated) 
+{
+	<form method="post" style="color:cornsilk" class="form-inline" asp-page="/Login/Logout">
+		Welcome @User.Identity.Name
+		<button type="submit" class="btn btn-primary">Logout</button>
+		@if (User.HasClaim("HR", "Admin"))
+		{
+			
+		}
+		else @if (User.HasClaim("UserManager", "Manager")) {
+			<a class="btn btn-primary" asp-page="/Login/UserSetting" asp-route-id="@User.FindFirst("UserId").Value">
+				<i class="bi bi-person-square"></i> &nbsp;Profile</a>
+		}
+		else @if (User.HasClaim("UserAssociate", "Associate")) {
+			<a class="btn btn-primary" asp-page="/Login/UserSetting" asp-route-id="@User.FindFirst("UserId").Value">
+				<i class="bi bi-person-square"></i> &nbsp;Profile</a>
+		}
+	</form>
+}
+else
+{
+	<a class="btn btn-primary" asp-page="/Login/UserLogin">Login</a>
+}

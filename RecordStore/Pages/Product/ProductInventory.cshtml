@@ -1,0 +1,53 @@
+﻿@page
+@model RecordStore.Pages.Product.ProductInventoryModel
+@{
+}
+@using System.Security.Claims
+
+<div class="container p-3">
+	<div class="row pt-4">
+		<div class="col-6">
+			<h2 class="text-primary"> Add a new product </h2>
+		</div>
+		<div class="col-6 text-end">
+			<a asp-page="AddProduct" class="btn btn-primary">
+				<i class="bi bi-pencil-square"></i> &nbsp;Submit
+			</a>
+		</div>
+	</div>
+
+<table class="table table-bordered table-striped" style="height:100%">
+		<thead>
+			<tr>
+				<td>ProductId</td>
+				<td>Product Name</td>
+				<td>Quantity</td>
+				<td>Price</td>
+				<td>StoreId</td>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var item in Model.Product)
+			{
+				<tr>
+					<td width="50%">@item.ProductID</td>
+					<td width="50%">@item.ProductName</td>
+					<td width="50%">@item.Quantity</td>
+					<td width="50%">@item.Price</td>
+					<td width="50%">@item.StoreId</td>
+					<td>
+						<div class="w-75 btn-group" role="group">
+								<a asp-page="Edit" asp-route-id="@item.ProductID" class="btn btn-primary">
+									<i class="bi bi-pencil-square"></i>
+								</a>
+								<a asp-page="Delete" asp-route-id="@item.ProductID" class="btn btn-danger">
+									<i class="bi bi-trash-fill"></i>
+								</a>
+						</div>
+					</td>
+				</tr>
+				
+			}
+		</tbody>
+</table>
+</div>

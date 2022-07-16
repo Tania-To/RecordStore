@@ -1,0 +1,57 @@
+﻿@page
+@model RecordStore.Pages.Associate.AssociatesModel
+@{
+}
+<div class="container p-3">
+	<div class="row pt-4">
+		<div class="col-6">
+			<h2 class="text-primary"> Add a new Associate </h2>
+		</div>
+		<div class="col-6 text-end">
+			<a asp-page="AddAssociate" class="btn btn-primary">
+				<i class="bi bi-pencil-square"></i> &nbsp;Submit
+			</a>
+		</div>
+	</div>
+
+<table class="table table-bordered table-striped" style="height:100%">
+		<thead>
+			<tr>
+				<td>AssociateID</td>
+				<td>First Name</td>
+				<td>Last Name</td>
+				<td>SSN</td>
+				<td>Date of Birth</td>
+				<td>StoreID</td>
+				<td>Password</td>
+				<td>Email</td>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var item in Model.Associate)
+			{
+				<tr>
+					<td width="50%">@item.AssociateID</td>
+					<td width="50%">@item.FirstName</td>
+					<td width="50%">@item.LastName</td>
+					<td width="50%">@item.SSN</td>
+					<td width="50%">@item.DoB</td>
+					<td width="50%">@item.StoreID</td>
+					<td width="50%">@item.Password</td>
+					<td width="50%">@item.Email</td>
+					<td>
+						<div class="w-75 btn-group" role="group">
+								<a asp-page="Edit" asp-route-id="@item.AssociateID" class="btn btn-primary">
+									<i class="bi bi-pencil-square"></i>
+								</a>
+								<a asp-page="Delete" asp-route-id="@item.AssociateID" class="btn btn-danger">
+									<i class="bi bi-trash-fill"></i>
+								</a>
+						</div>
+					</td>
+				</tr>
+				
+			}
+		</tbody>
+</table>
+</div>
