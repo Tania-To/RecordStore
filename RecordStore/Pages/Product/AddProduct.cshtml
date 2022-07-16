@@ -1,0 +1,40 @@
+﻿@page
+@model RecordStore.Pages.Product.AddProductModel
+@{
+}
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">New Product</h2>
+			<hr />
+         </div>
+
+    <div class="mb-3">
+			<label asp-for="Product.ProductName">Name</label>
+			<input asp-for="Product.ProductName" class="form-control" />
+		</div>
+    <div class="form-group">
+        <label asp-for="Product.Quantity">Quantity</label>
+		<input asp-for="Product.Quantity" class="form-control" />
+    </div>
+
+    <div class="form-group">
+       <label asp-for="Product.Price">Price</label>
+	   <input asp-for="Product.Price" class="form-control" />
+    </div>
+    <div class="form-group">
+       <label asp-for="Product.StoreId">StoreId</label>
+	   <input asp-for="Product.StoreId" class="form-control" />
+    </div><br />
+    <button type="submit" class="btn btn-primary" style="width:150px;">Add</button>
+    <a asp-page="ProductInventory" class="btn btn-secondary" style="width:150px;">Cancel</a>
+  
+    </div>
+</form>
+
+    
+@section Scripts {
+	@{
+		<partial name="_ValidationScriptsPartial"/>
+	}
+}
