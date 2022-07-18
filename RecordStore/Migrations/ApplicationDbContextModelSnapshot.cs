@@ -155,6 +155,7 @@ namespace RecordStore.Migrations
 
                     b.ToTable("Store");
                 });
+           
 #pragma warning restore 612, 618
         }
     }

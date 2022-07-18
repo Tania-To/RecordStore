@@ -3,7 +3,10 @@
 @{
 }
 @using System.Security.Claims
-
+@if(TempData["success"] != null)
+{
+	<h2>@TempData["success"]</h2>
+}
 <div class="container p-3">
 	<div class="row pt-4">
 		<div class="col-6">
@@ -37,10 +40,10 @@
 					<td width="50%">@item.StoreId</td>
 					<td>
 						<div class="w-75 btn-group" role="group">
-								<a asp-page="Edit" asp-route-id="@item.ProductID" class="btn btn-primary">
+								<a asp-page="EditProduct" asp-route-id="@item.ProductID" class="btn btn-primary">
 									<i class="bi bi-pencil-square"></i>
 								</a>
-								<a asp-page="Delete" asp-route-id="@item.ProductID" class="btn btn-danger">
+								<a asp-page="DeleteProduct" asp-route-id="@item.ProductID" class="btn btn-danger">
 									<i class="bi bi-trash-fill"></i>
 								</a>
 						</div>

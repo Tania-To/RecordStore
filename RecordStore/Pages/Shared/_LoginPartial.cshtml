@@ -9,11 +9,11 @@
 			
 		}
 		else @if (User.HasClaim("UserManager", "Manager")) {
-			<a class="btn btn-primary" asp-page="/Login/UserSetting" asp-route-id="@User.FindFirst("UserId").Value">
+			<a class="btn btn-primary" asp-page="/Manager/Managers" asp-route-id="@User.FindFirst("UserId").Value">
 				<i class="bi bi-person-square"></i> &nbsp;Profile</a>
 		}
 		else @if (User.HasClaim("UserAssociate", "Associate")) {
-			<a class="btn btn-primary" asp-page="/Login/UserSetting" asp-route-id="@User.FindFirst("UserId").Value">
+			<a class="btn btn-primary" asp-page="/Associate/Associates" asp-route-id="@User.FindFirst("UserId").Value">
 				<i class="bi bi-person-square"></i> &nbsp;Profile</a>
 		}
 	</form>

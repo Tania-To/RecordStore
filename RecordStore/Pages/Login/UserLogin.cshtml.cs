@@ -44,11 +44,11 @@ namespace RecordStore.Pages.Login
                 {
                     connection.Open();
                     
-                    String myCommand = "SELECT* FROM Manager WHERE ManagerID = @ManagerID AND Password = @Password ";
+                    String myCommand = "SELECT* FROM Manager WHERE Email = @Email AND Password = @Password ";
                     SqlCommand cmd = new SqlCommand(myCommand, connection);
 
-                    cmd.Parameters.Add("@ManagerID", SqlDbType.Int).Value = Credential.Email;
-                    cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 5).Value = Credential.Password;
+                    cmd.Parameters.Add("@Email", SqlDbType.NVarChar,200).Value = Credential.Email;
+                    cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 10).Value = Credential.Password;
                     int idNumber = Convert.ToInt32(cmd.ExecuteScalar());
 
                     if (idNumber > 0)
@@ -68,11 +68,11 @@ namespace RecordStore.Pages.Login
                         return RedirectToPage("/Index");
                     }
                     
-                    myCommand = "SELECT* FROM Associate WHERE ID = @AssociateID AND Password = @Password ";
+                    myCommand = "SELECT* FROM Associate WHERE Email = @Email AND Password = @Password ";
                     cmd = new SqlCommand(myCommand, connection);
 
-                    cmd.Parameters.Add("@AssociateID", SqlDbType.NVarChar, 100).Value = Credential.Email;
-                    cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 5).Value = Credential.Password;
+                    cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 200).Value = Credential.Email;
+                    cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 10).Value = Credential.Password;
                     idNumber = Convert.ToInt32(cmd.ExecuteScalar());
 
                     if (idNumber > 0)
